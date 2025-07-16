@@ -8,7 +8,6 @@ import { Badge } from '../components/ui/badge'
 import { Switch } from '../components/ui/switch'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs'
 import { Separator } from '../components/ui/separator'
-import { useNavigate } from 'react-router-dom'
 import blink from '../blink/client'
 import { toast } from 'sonner'
 
@@ -27,7 +26,6 @@ export default function ProfileSettings() {
     securityAlerts: true,
     marketing: false
   })
-  const navigate = useNavigate()
 
   useEffect(() => {
     const unsubscribe = blink.auth.onAuthStateChanged((state) => {
@@ -63,7 +61,7 @@ export default function ProfileSettings() {
   }
 
   const handleUpgrade = () => {
-    navigate('/pricing')
+    toast.info('Pricing page coming soon!')
   }
 
   // Mock data
@@ -92,7 +90,7 @@ export default function ProfileSettings() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="sm" onClick={() => navigate('/dashboard')}>
+              <Button variant="ghost" size="sm" onClick={() => toast.info('Dashboard navigation coming soon!')}>
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Dashboard
               </Button>

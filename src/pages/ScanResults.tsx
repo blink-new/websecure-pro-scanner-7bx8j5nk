@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
 import { 
   Shield, ArrowLeft, Download, Share2, AlertTriangle, CheckCircle, 
   XCircle, Clock, Globe, Zap, Eye, Code, ExternalLink, RefreshCw
@@ -16,8 +15,7 @@ import { seoService } from '../services/seoService'
 import type { SEOAuditResult } from '../services/seoService'
 
 export default function ScanResults() {
-  const { scanId } = useParams()
-  const navigate = useNavigate()
+  const scanId = 'mock-scan-id' // Mock scan ID since we don't have routing
   const [scanData, setScanData] = useState(null)
   const [seoData, setSeoData] = useState<SEOAuditResult | null>(null)
   const [loading, setLoading] = useState(true)
@@ -180,7 +178,7 @@ export default function ScanResults() {
           <XCircle className="w-16 h-16 text-red-400 mx-auto" />
           <h1 className="text-2xl font-bold">Scan Not Found</h1>
           <p className="text-muted-foreground">The requested scan could not be found.</p>
-          <Button onClick={() => navigate('/dashboard')}>
+          <Button onClick={() => toast.info('Dashboard navigation coming soon!')}>
             Return to Dashboard
           </Button>
         </div>
@@ -195,7 +193,7 @@ export default function ScanResults() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" size="sm" onClick={() => navigate('/dashboard')}>
+              <Button variant="ghost" size="sm" onClick={() => toast.info('Dashboard navigation coming soon!')}>
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 Back to Dashboard
               </Button>

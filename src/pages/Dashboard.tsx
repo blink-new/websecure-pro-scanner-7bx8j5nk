@@ -8,7 +8,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '../components/ui/tabs'
 import { Progress } from '../components/ui/progress'
 import blink from '../blink/client'
 import { toast } from 'sonner'
-import { useNavigate } from 'react-router-dom'
 
 export default function Dashboard() {
   const [user, setUser] = useState(null)
@@ -16,7 +15,6 @@ export default function Dashboard() {
   const [isScanning, setIsScanning] = useState(false)
   const [scans, setScans] = useState([])
   const [credits, setCredits] = useState(3)
-  const navigate = useNavigate()
 
   useEffect(() => {
     const unsubscribe = blink.auth.onAuthStateChanged((state) => {
@@ -69,7 +67,7 @@ export default function Dashboard() {
       setIsScanning(false)
       setScanUrl('')
       toast.success('Comprehensive scan completed successfully!')
-      navigate(`/scan/${newScan.id}`)
+      // TODO: Navigate to scan results when routing is implemented
     }, 6000)
   }
 
@@ -137,7 +135,7 @@ export default function Dashboard() {
                 </Badge>
               </div>
               
-              <Button variant="ghost" size="sm" onClick={() => navigate('/profile')}>
+              <Button variant="ghost" size="sm" onClick={() => toast.info('Settings page coming soon!')}>
                 <Settings className="w-4 h-4 mr-2" />
                 Settings
               </Button>
@@ -290,7 +288,7 @@ export default function Dashboard() {
             <div className="space-y-4">
               {recentScans.map((scan) => (
                 <Card key={scan.id} className="bg-card/50 backdrop-blur-sm border-border/40 hover:border-primary/40 transition-all duration-300 cursor-pointer"
-                      onClick={() => navigate(`/scan/${scan.id}`)}>
+                      onClick={() => toast.info('Scan details page coming soon!')}>
                   <CardContent className="p-6">
                     <div className="flex items-center justify-between">
                       <div className="space-y-2">

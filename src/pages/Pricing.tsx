@@ -4,13 +4,11 @@ import { Button } from '../components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '../components/ui/card'
 import { Badge } from '../components/ui/badge'
 import { Switch } from '../components/ui/switch'
-import { useNavigate } from 'react-router-dom'
 import blink from '../blink/client'
 import { toast } from 'sonner'
 
 export default function Pricing() {
   const [isAnnual, setIsAnnual] = useState(false)
-  const navigate = useNavigate()
 
   const handleGetStarted = (plan) => {
     if (plan === 'free') {
@@ -114,13 +112,13 @@ export default function Pricing() {
       <nav className="border-b border-border/40 backdrop-blur-sm sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate('/')}>
+            <div className="flex items-center space-x-2 cursor-pointer" onClick={() => toast.info('Navigation coming soon!')}>
               <Shield className="w-8 h-8 text-primary cyber-glow" />
               <span className="text-xl font-bold gradient-text">WebSecure Pro</span>
             </div>
             
             <div className="flex items-center space-x-4">
-              <Button variant="ghost" onClick={() => navigate('/')}>
+              <Button variant="ghost" onClick={() => toast.info('Navigation coming soon!')}>
                 Home
               </Button>
               <Button onClick={() => blink.auth.login()} className="cyber-glow">
